@@ -3,6 +3,7 @@ package com.supremvanam.supremvanam_comp304sec002_lab2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,9 +27,10 @@ public class MenuScreenActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Intent intent = new Intent(this, MainActivity.class);
         switch (item.getItemId()) {
             case R.id.canadianPizza:
-                Toast.makeText(MenuScreenActivity.this, "Canadian clicked", Toast.LENGTH_SHORT).show();
+                startActivity(intent);
                 break;
             case R.id.caesarPizza:
                 Toast.makeText(MenuScreenActivity.this, "Caesar clicked", Toast.LENGTH_SHORT).show();
