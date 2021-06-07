@@ -100,4 +100,8 @@ public class PizzaDetailsActivity extends AppCompatActivity implements AdapterVi
         radioButton = findViewById(radioId);
         Toast.makeText(this, "Selected Radio Button: "+radioButton.getText(), Toast.LENGTH_SHORT).show();
     }
+
+    public void addAnotherPizzaClicked(View view) {
+        PizzaDetailsActivity.this.finish();
+    }
 }
