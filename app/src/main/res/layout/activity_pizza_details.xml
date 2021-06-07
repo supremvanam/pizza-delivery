@@ -7,26 +7,162 @@
     tools:context=".PizzaDetailsActivity">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/img_pizzaImage"
         android:layout_width="413dp"
         android:layout_height="283dp"
         android:contentDescription="@string/src_pizza_image"
         android:scaleType="centerCrop"
+        android:src="@drawable/canadian_pizza"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/canadian_pizza" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="23dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="32dp"
+        android:layout_width="48dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
+        android:contentDescription="@string/str_back_button"
         android:onClick="backButtonClicked"
-        android:scaleType="centerCrop"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/back_btn" />
+        android:scaleType="fitCenter"
+        android:src="@drawable/back_btn"
+        app:layout_constraintStart_toStartOf="@+id/img_pizzaImage"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_pizzaName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/gatwick_bold"
+        android:text="@string/str_sample_pizza_name"
+        android:textColor="@color/primary"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_pizzaImage" />
+
+    <TextView
+        android:id="@+id/txt_pizzaToppings"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:fontFamily="@font/cmgsans_medium"
+        android:gravity="center"
+        android:text="@string/str_sample_toppings"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_pizzaName" />
+
+    <CheckBox
+        android:id="@+id/check_addToCart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:buttonTint="@color/primary"
+        android:fontFamily="@font/cmgsans_medium"
+        android:text="@string/str_add_to_cart"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/txt_pizzaPrice"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_pizzaToppings"
+        app:useMaterialThemeColors="true" />
+
+    <TextView
+        android:id="@+id/txt_pizzaPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/cmgsans_bold"
+        android:text="@string/str_sample_price"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/check_addToCart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/check_addToCart" />
+
+    <Spinner
+        android:id="@+id/sp_pizzaSizesSpinner"
+        android:layout_width="0dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/check_addToCart" />
+
+    <RadioGroup
+        android:id="@+id/rg_pizzaCrust"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_pizzaSizesSpinner">
+
+
+        <RadioButton
+            android:id="@+id/radioThinCrust"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/primary"
+            android:checked="true"
+            android:lineSpacingExtra="8sp"
+            android:onClick="radioButtonClicked"
+            android:paddingRight="30sp"
+            android:text="Thin Crust"
+            android:textColorLink="@color/design_default_color_secondary" />
+
+        <RadioButton
+            android:id="@+id/radioThickCrust"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/primary"
+            android:checked="false"
+            android:onClick="radioButtonClicked"
+            android:text="Thick Crust" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="0dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/custom_button_main"
+        android:text="Order Summary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageView5" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="71dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="24dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/button2"
+        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button2"
+        app:srcCompat="@drawable/add_more_button" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
