@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SupremVanam_COMP304Sec002_Lab2">
+        <activity android:name=".PizzaDetailsActivity"></activity>
         <activity android:name=".MenuScreenActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

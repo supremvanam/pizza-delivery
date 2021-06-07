@@ -27,7 +27,7 @@ public class MenuScreenActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, PizzaDetailsActivity.class);
         switch (item.getItemId()) {
             case R.id.canadianPizza:
                 startActivity(intent);
