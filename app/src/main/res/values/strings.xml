@@ -23,6 +23,11 @@
     <string name="str_thin_crust">Thin Crust</string>
     <string name="str_order_summary">Order Summary</string>
     <string name="str_add_another_pizza_button">Add another pizza button</string>
+    <string name="str_medium">Medium</string>
+    <string name="str_remove_from_cart">Remove from cart</string>
+    <string name="str_select_payment">Select Payment</string>
+    <string name="str_total_price_12_50">Total Price: $12.50</string>
+    <string name="str_total_price">Total Price: $</string>
     <string-array name="pizzaSizes">
         <item>Small</item>
         <item>Medium</item>

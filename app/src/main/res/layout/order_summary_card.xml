@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="170dp" android:layout_width="match_parent"
+
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/cart_pizzaTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/cmgsans_bold"
+            android:text="@string/str_smokey_maple_bacon"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintStart_toEndOf="@+id/cart_pizzaImage"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/cart_pizzaImage"
+            android:layout_width="163dp"
+            android:layout_height="141dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/hawaiian_pizza2"
+            app:civ_border_color="@color/primary"
+            app:civ_border_width="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/cart_pizzaPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/cmgsans_bold"
+            android:text="@string/str_sample_price"
+            android:textColor="@color/primary"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/cart_pizzaImage"
+            app:layout_constraintTop_toBottomOf="@+id/cart_pizzaToppings" />
+
+        <TextView
+            android:id="@+id/cart_pizzaCrust"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/cmgsans_regular"
+            android:text="@string/str_thin_crust"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cart_pizzaSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.252"
+            app:layout_constraintStart_toEndOf="@+id/cart_pizzaSize"
+            app:layout_constraintTop_toTopOf="@+id/cart_pizzaSize"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/cart_pizzaSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/cmgsans_regular"
+            android:text="@string/str_medium"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/cart_pizzaImage"
+            app:layout_constraintTop_toBottomOf="@+id/cart_pizzaTitle" />
+
+        <TextView
+            android:id="@+id/cart_pizzaToppings"
+            android:layout_width="207dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/cmgsans_medium"
+            android:text="@string/str_sample_toppings"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/cart_pizzaImage"
+            app:layout_constraintTop_toBottomOf="@+id/cart_pizzaSize" />
+
+        <ImageView
+            android:id="@+id/card_deleteItem"
+            android:layout_width="27dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_delete"
+            android:contentDescription="@string/str_remove_from_cart" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

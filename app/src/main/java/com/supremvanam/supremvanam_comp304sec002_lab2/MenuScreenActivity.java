@@ -14,11 +14,15 @@ import java.util.Objects;
 
 public class MenuScreenActivity extends AppCompatActivity {
 
+    SharedPreferences sharedPreferences;
+    public static final String SHARED_PREF_NAME = "myPref";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_screen);
+        sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
     }
 
     @Override
@@ -30,39 +34,62 @@ public class MenuScreenActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         Intent intent = new Intent(this, PizzaDetailsActivity.class);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
         switch (item.getItemId()) {
             case R.id.canadianPizza:
-                intent.putExtra("pizzaImage", R.drawable.canadian_pizza2);
-                intent.putExtra("pizzaTitle", "Canadian Pizza");
-                intent.putExtra("pizzaToppings", "Mozzarella Cheese, Bacon, Pepperoni, and Mushrooms");
+
+                editor.putInt("pizzaImage",  R.drawable.canadian_pizza2);
+                editor.putString("pizzaTitle", "Canadian Pizza");
+                editor.putString("pizzaToppings", "Mozzarella Cheese, Bacon, Pepperoni, and Mushrooms");
+                editor.apply();
+
                 intent.putExtra("pizzaPrice", 5.99);
                 startActivity(intent);
                 break;
+
             case R.id.caesarPizza:
-                intent.putExtra("pizzaImage", R.drawable.chicken_caesar_2);
-                intent.putExtra("pizzaTitle", "Chicken Caesar Pizza");
-                intent.putExtra("pizzaToppings", "Chicken Breast, Romaine Lettuce, Croutons, and Parmesan");
+
+                editor.putInt("pizzaImage",  R.drawable.chicken_caesar_2);
+                editor.putString("pizzaTitle", "Chicken Caesar Pizza");
+                editor.putString("pizzaToppings", "Chicken Breast, Romaine Lettuce, Croutons, and Parmesan");
+                editor.apply();
+
+
+//                intent.putExtra("pizzaImage", R.drawable.chicken_caesar_2);
+//                intent.putExtra("pizzaTitle", "Chicken Caesar Pizza");
+//                intent.putExtra("pizzaToppings", "Chicken Breast, Romaine Lettuce, Croutons, and Parmesan");
+
                 intent.putExtra("pizzaPrice", 7.79);
                 startActivity(intent);
                 break;
+
             case R.id.hawaiianPizza:
-                intent.putExtra("pizzaImage", R.drawable.hawaiian_pizza2);
-                intent.putExtra("pizzaTitle", "Hawaiian Pizza");
-                intent.putExtra("pizzaToppings", "Mozzarella Cheese, Sliced Ham, and Pineapple");
+                editor.putInt("pizzaImage",  R.drawable.hawaiian_pizza2);
+                editor.putString("pizzaTitle", "Hawaiian Pizza");
+                editor.putString("pizzaToppings", "Mozzarella Cheese, Sliced Ham, and Pineapple");
+                editor.apply();
+
                 intent.putExtra("pizzaPrice", 6.49);
                 startActivity(intent);
                 break;
+
             case R.id.baconPizza:
-                intent.putExtra("pizzaImage", R.drawable.bacon_pizza_2);
-                intent.putExtra("pizzaTitle", "Smokey Maple Bacon");
-                intent.putExtra("pizzaToppings", "Alfredo Sauce, Maple Bacon Strips, Bacon Crumble, Sliced Mushrooms, and Shredded Cheddar");
+                editor.putInt("pizzaImage",  R.drawable.bacon_pizza_2);
+                editor.putString("pizzaTitle", "Smokey Maple Bacon");
+                editor.putString("pizzaToppings", "Alfredo Sauce, Maple Bacon Strips, Bacon Crumble, Sliced Mushrooms, and Shredded Cheddar");
+                editor.apply();
+
                 intent.putExtra("pizzaPrice", 9.99);
                 startActivity(intent);
                 break;
+
             case R.id.veggiePizza:
-                intent.putExtra("pizzaImage", R.drawable.veggie_pizza_2);
-                intent.putExtra("pizzaTitle", "Veggie Lovers");
-                intent.putExtra("pizzaToppings", "Mushrooms, Green Peppers, Tomatoes, Black olives, and Onions.");
+                editor.putInt("pizzaImage",  R.drawable.veggie_pizza_2);
+                editor.putString("pizzaTitle", "Veggie Lovers");
+                editor.putString("pizzaToppings", "Mushrooms, Green Peppers, Tomatoes, Black Olives, and Onions");
+                editor.apply();
+
                 intent.putExtra("pizzaPrice", 5.49);
                 startActivity(intent);
                 break;
