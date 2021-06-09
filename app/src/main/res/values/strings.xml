@@ -48,6 +48,7 @@
     <string name="str_billing_details">Billing Details</string>
     <string name="str_order_success_image">Order Success Image</string>
     <string name="str_paid_by_cash">Paid by cash</string>
+    <string name="str_payment_type">Payment Type</string>
     <string-array name="pizzaSizes">
         <item>Small</item>
         <item>Medium</item>

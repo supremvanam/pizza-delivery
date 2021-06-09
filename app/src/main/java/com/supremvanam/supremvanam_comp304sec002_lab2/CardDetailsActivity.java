@@ -69,7 +69,6 @@ public class CardDetailsActivity extends AppCompatActivity {
             editor.putString("cardHolderName", cardholderName.getText().toString());
             editor.putString("cardNumber", cardNumber.getText().toString());
             editor.putString("expiryDate", expiryDate.getText().toString());
-            Toast.makeText(this, "All details stored", Toast.LENGTH_SHORT).show();
             editor.apply();
 
             Intent intent = new Intent(this, CustomerDetailsActivity.class);

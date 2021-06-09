@@ -32,12 +32,15 @@ public class OrderSuccessActivity extends AppCompatActivity {
         TextView customerPostalCode = findViewById(R.id.success_postalCode);
         TextView customerPhone = findViewById(R.id.success_Phone);
         TextView customerEmail = findViewById(R.id.newSuccessEmail);
+        TextView favPizza = findViewById(R.id.success_favPizza);
+        TextView favTopping = findViewById(R.id.success_favTopping);
+        TextView paymentType = findViewById(R.id.success_paymentType);
         TextView cardholderName = findViewById(R.id.success_cardholderName);
         TextView cardNumber = findViewById(R.id.success_cardNumber);
         TextView cardExpiry = findViewById(R.id.success_Expiry);
         TextView totalPrice = findViewById(R.id.success_totalPrice);
-        TextView favPizza = findViewById(R.id.success_favPizza);
-        TextView favTopping = findViewById(R.id.success_favTopping);
+
+
         String checkingIfCashPayment;
         totalPrice.setText(String.format("%s%s", getString(R.string.str_total_price), sharedPreferences.getString("pizzaPrice", "$10.95")));
 
@@ -57,11 +60,13 @@ public class OrderSuccessActivity extends AppCompatActivity {
         favPizza.setText(String.format("Favourite Pizza: %s", sharedPreferences.getString("customerFavPizza", "Chicken Barbecue Pizza")));
         favTopping.setText(String.format("Favourite Topping: %s", sharedPreferences.getString("customerFavTopping", "Jalapenos")));
 
-        checkingIfCashPayment = sharedPreferences.getString("cardHolderName", null);
-        if(checkingIfCashPayment == null) {
-            cardholderName.setText(R.string.str_paid_by_cash);
+        // If paye
+        checkingIfCashPayment = sharedPreferences.getString("paymentOption", null);
+        if(checkingIfCashPayment.equals("Cash")) {
+            paymentType.setText(R.string.str_paid_by_cash);
         } else {
             // Using String.format instead of String Concatenation because it is recommended by Android Developers.
+            paymentType.setText(sharedPreferences.getString("paymentOption", null));
             cardholderName.setText(String.format("Cardholder Name: %s", sharedPreferences.getString("cardHolderName", null)));
             cardNumber.setText(String.format("Card Number: %s", sharedPreferences.getString("cardNumber", null)));
             cardExpiry.setText(String.format("Expiry: %s", sharedPreferences.getString("expiryDate", null)));

@@ -11,6 +11,7 @@ import android.view.MenuItem;
 
 public class MenuScreenActivity extends AppCompatActivity {
 
+    // Loading Dialog is the custom class that shows loading spinner while loading the pizza details screen.
     LoadingDialog loadingDialog;
     SharedPreferences sharedPreferences;
     public static final String SHARED_PREF_NAME = "myPref";

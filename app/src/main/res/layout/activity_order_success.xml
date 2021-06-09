@@ -227,17 +227,6 @@
             app:layout_constraintTop_toBottomOf="@+id/success_favTopping" />
 
         <TextView
-            android:id="@+id/success_cardholderName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/cmgsans_medium"
-            android:textSize="17sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/success_billingDetails" />
-
-        <TextView
             android:id="@+id/success_cardNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -247,6 +236,17 @@
             android:textSize="17sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/success_cardholderName" />
+
+        <TextView
+            android:id="@+id/success_cardholderName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/cmgsans_medium"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/success_paymentType" />
 
         <TextView
             android:id="@+id/success_Expiry"
@@ -282,6 +282,17 @@
             android:textSize="17sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/success_favPizza" />
+
+        <TextView
+            android:id="@+id/success_paymentType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/cmgsans_medium"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/success_billingDetails" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
