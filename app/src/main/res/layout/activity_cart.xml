@@ -27,7 +27,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="16dp"
-        android:src="@drawable/hawaiian_pizza2"
+        android:src="@drawable/hawaiian_001"
         app:civ_border_color="@color/primary"
         app:civ_border_width="2dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,17 +35,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/cart_pizzaPrice"
+        android:id="@+id/txt_totalPriceCardDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/cmgsans_regular"
-        android:text="@string/str_total_price_12_50"
+        android:text="@string/str_total_price_12_49"
         android:textColor="@color/black"
         android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/success_homeButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -91,7 +91,8 @@
         app:layout_constraintTop_toBottomOf="@+id/cart_pizzaSize" />
 
     <Button
-        android:id="@+id/button"
+        android:onClick="selectPaymentClicked"
+        android:id="@+id/success_homeButton"
         android:layout_width="349dp"
         android:layout_height="55dp"
         android:layout_marginStart="32dp"

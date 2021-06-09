@@ -12,7 +12,7 @@
         android:layout_height="283dp"
         android:contentDescription="@string/src_pizza_image"
         android:scaleType="centerCrop"
-        android:src="@drawable/canadian_pizza"
+        android:src="@drawable/canadian_pizza_min"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

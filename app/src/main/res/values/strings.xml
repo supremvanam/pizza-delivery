@@ -17,7 +17,7 @@
     <string name="str_add_to_cart">Add to Cart</string>
     <string name="str_sample_toppings">Bacon, Gouda Cheese, Mozzarella Cheese, Jalapenos</string>
     <string name="str_sample_pizza_name">Smokey Maple Bacon</string>
-    <string name="str_sample_price">$12.50</string>
+    <string name="str_sample_price">$12.49</string>
     <string name="str_dollar">$</string>
     <string name="str_thick_crust">Thick Crust</string>
     <string name="str_thin_crust">Thin Crust</string>
@@ -26,8 +26,28 @@
     <string name="str_medium">Medium</string>
     <string name="str_remove_from_cart">Remove from cart</string>
     <string name="str_select_payment">Select Payment</string>
-    <string name="str_total_price_12_50">Total Price: $12.50</string>
+    <string name="str_total_price_12_49">Total Price: $12.49</string>
     <string name="str_total_price">Total Price: $</string>
+    <string name="str_cardholder_name">Cardholder Name</string>
+    <string name="str_card_number">Card Number</string>
+    <string name="str_expiry">Expiry</string>
+    <string name="str_cvv">CVV</string>
+    <string name="str_next">Next</string>
+    <string name="str_name">Name</string>
+    <string name="str_street">Street</string>
+    <string name="str_favourite_topping">Favourite Topping</string>
+    <string name="str_favourite_pizza">Favourite Pizza</string>
+    <string name="str_email">Email</string>
+    <string name="str_phone">Phone</string>
+    <string name="str_postal_code">Postal Code</string>
+    <string name="str_city">City</string>
+    <string name="str_loading">Loading...</string>
+    <string name="str_home">Home</string>
+    <string name="str_order_details">Order Details</string>
+    <string name="str_customer_details">Customer Details</string>
+    <string name="str_billing_details">Billing Details</string>
+    <string name="str_order_success_image">Order Success Image</string>
+    <string name="str_paid_by_cash">Paid by cash</string>
     <string-array name="pizzaSizes">
         <item>Small</item>
         <item>Medium</item>

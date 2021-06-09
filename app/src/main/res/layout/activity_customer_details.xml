@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F5F5F8"
+        tools:context=".CustomerDetailsActivity">
+
+
+        <EditText
+            android:id="@+id/customerName"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/custom_text_view"
+            android:ems="10"
+            android:hint="@string/str_name"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/customerStreet"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/custom_text_view"
+            android:ems="10"
+            android:hint="@string/str_street"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="@+id/customerName"
+            app:layout_constraintStart_toStartOf="@+id/customerName"
+            app:layout_constraintTop_toBottomOf="@+id/customerName" />
+
+        <EditText
+            android:id="@+id/customerCity"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/custom_text_view"
+            android:ems="10"
+            android:hint="@string/str_city"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="@+id/customerStreet"
+            app:layout_constraintStart_toStartOf="@+id/customerStreet"
+            app:layout_constraintTop_toBottomOf="@+id/customerStreet" />
+
+        <EditText
+            android:id="@+id/customerPostalCode"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/custom_text_view"
+            android:ems="10"
+            android:hint="@string/str_postal_code"
+            android:importantForAutofill="no"
+            android:inputType="textPostalAddress"
+            app:layout_constraintEnd_toEndOf="@+id/customerCity"
+            app:layout_constraintStart_toStartOf="@+id/customerCity"
+            app:layout_constraintTop_toBottomOf="@+id/customerCity" />
+
+        <EditText
+            android:id="@+id/customerPhone"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/custom_text_view"
+            android:ems="10"
+            android:hint="@string/str_phone"
+            android:importantForAutofill="no"
+            android:inputType="phone"
+            app:layout_constraintEnd_toEndOf="@+id/customerPostalCode"
+            app:layout_constraintStart_toStartOf="@+id/customerPostalCode"
+            app:layout_constraintTop_toBottomOf="@+id/customerPostalCode" />
+
+        <EditText
+            android:id="@+id/customer_email"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/custom_text_view"
+            android:ems="10"
+            android:hint="@string/str_email"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="@+id/customerPhone"
+            app:layout_constraintStart_toStartOf="@+id/customerPhone"
+            app:layout_constraintTop_toBottomOf="@+id/customerPhone" />
+
+        <EditText
+            android:id="@+id/customerFavPizza"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/custom_text_view"
+            android:ems="10"
+            android:hint="@string/str_favourite_pizza"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="@+id/customer_email"
+            app:layout_constraintStart_toStartOf="@+id/customer_email"
+            app:layout_constraintTop_toBottomOf="@+id/customer_email" />
+
+        <EditText
+            android:id="@+id/customerFavTopping"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/custom_text_view"
+            android:ems="10"
+            android:hint="@string/str_favourite_topping"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="@+id/customerFavPizza"
+            app:layout_constraintStart_toStartOf="@+id/customerFavPizza"
+            app:layout_constraintTop_toBottomOf="@+id/customerFavPizza" />
+
+        <TextView
+            android:id="@+id/customer_totalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/cmgsans_regular"
+            android:text="@string/str_total_price_12_49"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="@+id/customerFavTopping"
+            app:layout_constraintStart_toStartOf="@+id/customerFavTopping"
+            app:layout_constraintTop_toBottomOf="@+id/customerFavTopping" />
+
+        <Button
+            android:id="@+id/customer_nextButton"
+            android:layout_width="349dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/custom_button_main"
+            android:fontFamily="@font/cmgsans_medium"
+            android:onClick="customerCheckoutClicked"
+            android:text="@string/str_next"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toEndOf="@+id/customer_totalPrice"
+            app:layout_constraintStart_toStartOf="@+id/customer_totalPrice"
+            app:layout_constraintTop_toBottomOf="@+id/customer_totalPrice" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

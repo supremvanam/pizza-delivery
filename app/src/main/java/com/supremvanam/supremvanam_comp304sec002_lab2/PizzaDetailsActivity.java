@@ -1,11 +1,9 @@
 package com.supremvanam.supremvanam_comp304sec002_lab2;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,124 +13,146 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Space;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.text.DecimalFormat;
 import java.util.Objects;
 
 public class PizzaDetailsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private Spinner spinner;
     private RadioGroup radioGroup;
-    private RadioButton radioButton;
-    private ImageView pizzaImage;
     private TextView pizzaTitle, pizzaToppings, pizzaPrice;
     private CheckBox addToCardCheckBox;
     private Button orderSummaryButton;
     private int pizzaImageResource;
     private double originalPrice;
     private double calculatedPrice;
-    private String pizzaSize = "Small";
-    private String pizzaCrust = "Thin Crust";
+    private String pizzaSize = "Small", pizzaCrust = "Thin Crust";
     SharedPreferences sharedPreferences;
+    LoadingDialog loadingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pizza_details);
+
+        // Hiding the top toolbar -- just to make it look full screen
         Objects.requireNonNull(getSupportActionBar()).hide();
 
 
         // Connecting the UI element objects to the UI elements
-        pizzaImage = findViewById(R.id.img_pizzaImage);
+        ImageView pizzaImage = findViewById(R.id.img_pizzaImage);
         pizzaTitle = findViewById(R.id.txt_pizzaName);
         pizzaToppings = findViewById(R.id.txt_pizzaToppings);
         pizzaPrice = findViewById(R.id.txt_pizzaPrice);
-        spinner = findViewById(R.id.sp_pizzaSizesSpinner);
+        Spinner spinner = findViewById(R.id.sp_pizzaSizesSpinner);
         radioGroup = findViewById(R.id.rg_pizzaCrust);
         addToCardCheckBox = findViewById(R.id.check_addToCart);
         orderSummaryButton = findViewById(R.id.btn_orderSummary);
+        loadingDialog = new LoadingDialog(this);
 
+        // If the checkbox is not checked then the button to go to the next activity will be disabled.
         if (!addToCardCheckBox.isChecked()) {
             orderSummaryButton.setEnabled(false);
         }
 
+        // Using the Array from the string resource file and setting up the pizza sizes spinner.
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.pizzaSizes, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
-        // Receiving details from the previous Activity
+        // Receiving data from the previous Activity
         Intent menuScreenIntent = getIntent();
         sharedPreferences = getSharedPreferences(MenuScreenActivity.SHARED_PREF_NAME, MODE_PRIVATE);
         pizzaTitle.setText(sharedPreferences.getString("pizzaTitle", null));
         pizzaToppings.setText(sharedPreferences.getString("pizzaToppings", null));
-        pizzaImageResource = sharedPreferences.getInt("pizzaImage", R.drawable.canadian_pizza2);
+        pizzaImageResource = sharedPreferences.getInt("pizzaImage", R.drawable.canadian_pizza_min);
         originalPrice = menuScreenIntent.getDoubleExtra("pizzaPrice", 5.00);
         pizzaImage.setImageResource(pizzaImageResource);
 
-        // String concatenation is not a good practice when using setText - according to the Android Developers website.
+        // Using String.format because string concatenation is not a good practice when using setText - according to the Android Developers website.
         pizzaPrice.setText(String.format("%s%s", getString(R.string.str_dollar), originalPrice));
-
-
-
     }
 
+    // When back button on the top toolbar is clicked user will be taken to the previous activity.
     public void backButtonClicked(View view) {
         PizzaDetailsActivity.this.finish();
     }
 
     public void addToCartChecked(View view) {
-
-        if (!addToCardCheckBox.isChecked()) {
-            orderSummaryButton.setEnabled(false);
-        } else {
-            orderSummaryButton.setEnabled(true);
-        }
+        // If checkbox is checked then the button to go to the next activity will be enable, otherwise it will be disabled.
+        orderSummaryButton.setEnabled(addToCardCheckBox.isChecked());
     }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         String choice = adapterView.getItemAtPosition(i).toString();
 
-        // I used String.format because String concatenation is not a good practice when using setText - according to the Android Developers website.
+        switch (choice) {
+            case "Medium":
+                pizzaSize = "Medium";
 
-        if (choice.equals("Medium")) {
-            pizzaSize = "Medium";
-            calculatedPrice = originalPrice * 1.2;
-            // Assuming the cost of a medium pizza is 1.2 times higher than the small pizza
-            pizzaPrice.setText(String.format("%s%s", getString(R.string.str_dollar), new DecimalFormat("0.00"). format(calculatedPrice)));
+                // Assuming the cost of a medium pizza is 1.2 times higher than the small pizza
+                calculatedPrice = originalPrice * 1.2;
 
-        } else if (choice.equals("Large")) {
-            pizzaSize = "Large";
-            calculatedPrice = originalPrice * 1.5;
-            // Assuming the cost of a large pizza is 1.5 times higher than the small pizza
-            pizzaPrice.setText(String.format("%s%s", getString(R.string.str_dollar), new DecimalFormat("0.00"). format(calculatedPrice)));
+                // Limiting the decimal places to 2
+                calculatedPrice = calculatedPrice * 100;
+                calculatedPrice = Math.round(calculatedPrice);
+                calculatedPrice = calculatedPrice / 100;
 
-        } else if (choice.equals("Extra Large")) {
-            pizzaSize = "Extra Large";
-            calculatedPrice = originalPrice * 2;
+                // I used String.format because String concatenation is not a good practice when using setText - according to the Android Developers website.
+                pizzaPrice.setText(String.format("%s%s", getString(R.string.str_dollar), calculatedPrice));
 
-            // Assuming the cost of an extra large pizza is 2 times higher than the small pizza
-            pizzaPrice.setText(String.format("%s%s", getString(R.string.str_dollar), new DecimalFormat("0.00"). format(calculatedPrice)));
-        } else {
-            calculatedPrice = originalPrice;
-            pizzaPrice.setText(String.format("%s%s", getString(R.string.str_dollar), calculatedPrice));
+                break;
+            case "Large":
+                pizzaSize = "Large";
+
+                // Assuming the cost of a large pizza is 1.5 times higher than the small pizza
+                calculatedPrice = originalPrice * 1.5;
+
+                // Limiting the decimal places to 2
+                calculatedPrice = calculatedPrice * 100;
+                calculatedPrice = Math.round(calculatedPrice);
+                calculatedPrice = calculatedPrice / 100;
+                pizzaPrice.setText(String.format("%s%s", getString(R.string.str_dollar), calculatedPrice));
+
+                break;
+            case "Extra Large":
+                pizzaSize = "Extra Large";
+
+                // Assuming the cost of an extra large pizza is 2 times higher than the small pizza
+                calculatedPrice = originalPrice * 2;
+
+                // Limiting the decimal places to 2
+                calculatedPrice = calculatedPrice * 100;
+                calculatedPrice = Math.round(calculatedPrice);
+                calculatedPrice = calculatedPrice / 100;
+
+                pizzaPrice.setText(String.format("%s%s", getString(R.string.str_dollar), calculatedPrice));
+                break;
+            default:
+                calculatedPrice = originalPrice;
+
+                // Limiting the decimal places to 2
+                calculatedPrice = calculatedPrice * 100;
+                calculatedPrice = Math.round(calculatedPrice);
+                calculatedPrice = calculatedPrice / 100;
+                pizzaPrice.setText(String.format("%s%s", getString(R.string.str_dollar), calculatedPrice));
+                break;
         }
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-
+        // This method needs to be overridden to use Spinner.
     }
 
 
+    // Selecting the radio button and assigning the correct string value so that we can use it later with the help of SharedPreferences.
     public void radioButtonClicked(View view) {
         int radioId = radioGroup.getCheckedRadioButtonId();
-        radioButton = findViewById(radioId);
+        RadioButton radioButton = findViewById(radioId);
 
         if (radioButton == findViewById(R.id.radioThinCrust)) {
             pizzaCrust = "Thin Crust";
@@ -141,12 +161,13 @@ public class PizzaDetailsActivity extends AppCompatActivity implements AdapterVi
         }
     }
 
+    // If user clicks bottom black button, they will be taken to the previous page to select another pizza.
     public void addAnotherPizzaClicked(View view) {
         PizzaDetailsActivity.this.finish();
     }
 
     public void orderSummaryClicked(View view) {
-
+    //  Saving the user selected data into SharedPreferences when user clicks on order summary button
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("pizzaTitle", pizzaTitle.getText().toString());
         editor.putInt("pizzaImage", pizzaImageResource);
@@ -159,5 +180,19 @@ public class PizzaDetailsActivity extends AppCompatActivity implements AdapterVi
 
         Intent intent = new Intent(this, CartActivity.class);
         startActivity(intent);
+
+        // Progress bar (loading spinner) starts when user clicks on order summary button
+        loadingDialog.startLoading();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        try {
+            // Progress bar will be dismissed just before the activity is stopped (or moved to a different activity)
+            loadingDialog.stopLoading();
+        } catch (Exception ex) {
+            System.out.println("Alert dialog isn't active");
+        }
     }
 }
